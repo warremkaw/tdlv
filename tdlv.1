@@ -1,0 +1,35 @@
+.TH TDLV 1 tdlv
+
+.SH NAME
+tdlv \- temporarily download and view
+
+.SH SYNOPSIS
+.B tdlv
+.RI [ URL ...] \ command
+
+.SH DESCRIPTION
+A shell script for viewing files from remote URLs with a user specified
+program. It downloads files to a temporary directory in /tmp and pipes the
+filepaths to a user-specified
+.IR command .
+When the specified
+.I command
+exits the temporary files will be removed.
+.P
+tdlv accepts whitespace-separated URLs from stdin and/or as arguments.
+The specified
+.I command
+must accept filepaths from stdin.
+
+.SH EXAMPLES
+$ tdlv url1 url2 'sxiv -'
+.TP
+$ <urls tdlv 'sxiv -'
+.TP
+$ cat urls | tdlv 'xargs -n 1 -P 0 zathura'
+
+.SH LICENSE
+See the LICENSE file.
+
+.SH AUTHORS
+warremkaw (https://github.com/warremkaw/)
